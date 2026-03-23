@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect, type CSSProperties } from "react";
 
 const FONT_URL =
