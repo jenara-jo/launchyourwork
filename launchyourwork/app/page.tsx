@@ -17,23 +17,14 @@ export default function LaunchYourWorkLanding() {
     setTimeout(() => setLoaded(true), 100);
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!email.includes("@")) return;
 
-    const form = document.createElement("form");
-    form.method = "POST";
-    form.action = "https://app.kit.com/forms/9240743/subscriptions";
-    form.target = "kit-frame";
-
-    const input = document.createElement("input");
-    input.type = "hidden";
-    input.name = "email_address";
-    input.value = email;
-
-    form.appendChild(input);
-    document.body.appendChild(form);
-    form.submit();
-    document.body.removeChild(form);
+    await fetch("/api/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
 
     setSubmitted(true);
   };
