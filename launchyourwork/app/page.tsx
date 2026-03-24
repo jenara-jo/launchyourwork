@@ -17,18 +17,23 @@ export default function LaunchYourWorkLanding() {
     setTimeout(() => setLoaded(true), 100);
   }, []);
 
-  const handleSubmit = async (e?: { preventDefault(): void }) => {
-    if (e) e.preventDefault();
+  const handleSubmit = () => {
     if (!email.includes("@")) return;
 
-    const formData = new FormData();
-    formData.append("email_address", email);
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = "https://app.kit.com/forms/9240743/subscriptions";
+    form.target = "kit-frame";
 
-    await fetch("https://app.kit.com/forms/9240743/subscriptions", {
-      method: "POST",
-      body: formData,
-      mode: "no-cors",
-    });
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = "email_address";
+    input.value = email;
+
+    form.appendChild(input);
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
 
     setSubmitted(true);
   };
@@ -173,6 +178,7 @@ export default function LaunchYourWorkLanding() {
           © 2026 Launch Your Work. All rights reserved.
         </span>
       </div>
+      <iframe name="kit-frame" style={{ display: "none" }} />
     </div>
   );
 }
