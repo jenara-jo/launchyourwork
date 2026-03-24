@@ -17,15 +17,19 @@ export default function LaunchYourWorkLanding() {
     setTimeout(() => setLoaded(true), 100);
   }, []);
 
-  const handleSubmit = (e?: { preventDefault(): void }) => {
+  const handleSubmit = async (e?: { preventDefault(): void }) => {
     if (e) e.preventDefault();
     if (!email.includes("@")) return;
-    // In production, replace this with a Kit form submission:
-    fetch("https://app.kit.com/forms/9240743/subscriptions", {
+
+    const formData = new FormData();
+    formData.append("email_address", email);
+
+    await fetch("https://app.kit.com/forms/9240743/subscriptions", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email_address: email }),
+      body: formData,
+      mode: "no-cors",
     });
+
     setSubmitted(true);
   };
 
