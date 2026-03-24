@@ -21,11 +21,11 @@ export default function LaunchYourWorkLanding() {
     if (e) e.preventDefault();
     if (!email.includes("@")) return;
     // In production, replace this with a Kit form submission:
-    // fetch('https://app.kit.com/forms/YOUR_FORM_ID/subscriptions', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ email_address: email })
-    // })
+    fetch("https://app.kit.com/forms/9240743/subscriptions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email_address: email }),
+    });
     setSubmitted(true);
   };
 
