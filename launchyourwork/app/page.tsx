@@ -93,8 +93,8 @@ export default function LaunchYourWorkLanding() {
             animation: loaded ? "fadeUp 0.7s ease 0.1s both" : "none",
           }}
         >
-          A free AI prompt + framework for talking about your job on LinkedIn
-          without getting in trouble.
+          A free AI prompt + framework for turning your experience into LinkedIn
+          posts.
         </h1>
 
         {/* Subheadline */}
@@ -104,8 +104,7 @@ export default function LaunchYourWorkLanding() {
             animation: loaded ? "fadeUp 0.7s ease 0.2s both" : "none",
           }}
         >
-          For people in tech who know visibility matters but aren&apos;t sure
-          what&apos;s safe to share.
+          For people in tech who want their work to open doors for them.
         </p>
 
         {/* Email capture */}
@@ -147,7 +146,10 @@ export default function LaunchYourWorkLanding() {
             <div style={styles.successCheck}>✓</div>
             <div>
               <div style={styles.successTitle}>Check your inbox.</div>
-              <div style={styles.successSub}>The framework is on its way.</div>
+              <div style={styles.successSub}>
+                The framework is on its way. Don&apos;t see it? Check your
+                Promotions or Spam folder.
+              </div>{" "}
             </div>
           </div>
         )}
